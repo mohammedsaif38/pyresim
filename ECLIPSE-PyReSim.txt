@@ -1,5 +1,3 @@
-% ECLIPSE FILE
-
 RUNSPEC
 
 TITLE
@@ -21,11 +19,61 @@ DIMENS
  UNIFIN
  UNIFOUT
 
+-- 
+
 -- Wells
  WELLDIMS
- 6 1 2 5 /
+ 6 1 2 6 /
 
 -- Aquifer direction (Connected to Eastern side of the reservoir)
  AQUDIMS
  1* 1 35 / 
+
+-- Fault
+FAULTDIM
+ 1 /
+
+
+GRID
+
+-- For viewing the grid file in 3-D viewing softwares
+GRIDFILE
+2 1 /
+
+-- Defining Fault dimensions
+FAULTS
+--        IX1 IX2 IY1 IY2 IZ1 IZ2
+
+'Fault1'   18  18   1  35   1   1 /
+
+-- Defining transmissibility of the fault
+MULTFLT
+Fault1 1 /
+/
+
+-- Grid cells 
+DX
+   1225*300 /
+DY
+   1225*300 /
+DZ
+   1225*50 /
+
+-- Porosity defination
+PORO
+ 1225*25 /
+
+-- Permeability in X,Y and Z
+PERMX
+  1225*100 /
+PERMY
+  1225*100 /
+PERMZ
+  1225*100 /
+
+INIT
+
+-- Displaying the follwoing after simulation run
+RPTGRID
+DX DY DZ FAULTS PERMX PERMY PERMZ PORO PORV /
 
